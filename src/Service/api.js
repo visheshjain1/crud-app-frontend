@@ -1,21 +1,36 @@
 import axios from 'axios';
+import Cookies from 'js-cookie'
 
 // const usersUrl = 'http://localhost:3003/users';
 const usersUrl = 'http://localhost:8080';
 
+const cook = Cookies.get('token')
+
 export const getUsers = async (id) => {
     id = id || '';
-    return await axios.get(`${usersUrl}/${id}`);
+    console.log('This is Cookie ' + cook)
+    if (id === '')
+        return await axios.get(`${usersUrl}/${cook}`);
+    else
+        return await axios.get(`${usersUrl}/${id}/${cook}`);
 }
 
 export const addUser = async (user) => {
-    return await axios.post(`${usersUrl}/add`, user);
+    return await axios.post(`${usersUrl}/add/${cook}`, user);
+}
+
+export const loginUser = async (user) => {
+    return await axios.post(`${usersUrl}/login`, user);
+}
+
+export const registerUser = async (user) => {
+    return await axios.post(`${usersUrl}/register`, user);
 }
 
 export const deleteUser = async (id) => {
-    return await axios.delete(`${usersUrl}/${id}`);
+    return await axios.delete(`${usersUrl}/${id}/${cook}`);
 }
 
 export const editUser = async (id, user) => {
-    return await axios.put(`${usersUrl}/${id}`, user)
+    return await axios.put(`${usersUrl}/${id}/${cook}`, user)
 }

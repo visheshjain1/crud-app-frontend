@@ -24,7 +24,7 @@ const TRow = styled(TableRow)`
 
 const AllUsers = () => {
     const [users, setUsers] = useState([]);
-    
+
     useEffect(() => {
         getAllUsers();
     }, []);
@@ -60,13 +60,14 @@ const AllUsers = () => {
                         <TableCell>{user.email}</TableCell>
                         <TableCell>{user.phone}</TableCell>
                         <TableCell>
-                            <Button color="primary" variant="contained" style={{marginRight:10}} component={Link} to={`/edit/${user._id}`}>Edit</Button> {/* change it to user.id to use JSON Server */}
+                            <Button color="primary" variant="contained" style={{ marginRight: 10 }} component={Link} to={`/edit/${user._id}`}>Edit</Button> {/* change it to user.id to use JSON Server */}
                             <Button color="secondary" variant="contained" onClick={() => deleteUserData(user._id)}>Delete</Button> {/* change it to user.id to use JSON Server */}
                         </TableCell>
                     </TRow>
                 ))}
             </TableBody>
         </StyledTable>
+
     )
 }
 
