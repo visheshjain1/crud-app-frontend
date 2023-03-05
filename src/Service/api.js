@@ -2,7 +2,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie'
 
 // const usersUrl = 'http://localhost:3003/users';
-const usersUrl = 'http://localhost:8080';
+const usersUrl = 'https://contact-list-bakend-production.up.railway.app';
 
 const cook = Cookies.get('token')
 
